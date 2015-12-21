@@ -135,7 +135,7 @@ public class DeserializationUtilsTest {
                                             @Injectable final ObjectMapper objectMapper,
                                             @Injectable final JsonNode jsonNode) throws Exception {
 
-        String jsonStr = "really good json";
+        String jsonStr = "{really good json}";
 
         new Expectations() {{
             Json.mapper();
@@ -149,7 +149,7 @@ public class DeserializationUtilsTest {
         JsonNode result = DeserializationUtils.deserializeIntoTree(jsonStr, "foo.json");
         assertTrue(jsonNode == result);
 
-        result = DeserializationUtils.deserializeIntoTree(jsonStr, "foo");
+        result = DeserializationUtils.deserializeIntoTree(jsonStr, "foo#/definition");
         assertTrue(jsonNode == result);
     }
 
